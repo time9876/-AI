@@ -1,0 +1,38 @@
+# Starx Configuration Schema
+
+# This file defines the configuration schema for the Starx system
+# All configuration parameters and their validation rules are specified here
+
+version: "1.0"
+
+# Project configuration
+project:
+  name: "starx-workbench"
+  version: "0.1.0"
+  description: "Project workflow management system"
+
+# Runtime configuration
+runtime:
+  log_level: "INFO"
+  output_dir: ".starx/output"
+  evidence_dir: ".starx/evidence"
+  
+# Acceptance testing configuration
+acceptance:
+  enabled: true
+  report_failures: true
+  generate_evidence: true
+  evidence_bundle:
+    include_logs: true
+    include_diffs: true
+    include_metadata: true
+    output_format: "json"
+  
+# Command configuration
+commands:
+  run:
+    description: "Execute the main workflow"
+  stats:
+    description: "Display project statistics"
+  acceptance:
+    description: "Run acceptance tests and generate evidence bundle"

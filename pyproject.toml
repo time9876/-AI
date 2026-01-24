@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "starx-workbench"
+version = "0.1.0"
+description = "Project workflow management system with acceptance testing"
+readme = "README.md"
+requires-python = ">=3.7"
+dependencies = [
+    "PyYAML>=5.4",
+]
+
+[project.scripts]
+starx = "starx.__main__:main"
