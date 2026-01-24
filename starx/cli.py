@@ -4,7 +4,7 @@ import os
 import sys
 import json
 import yaml
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from starx.core.logging.log_contract import LogContract
 
@@ -13,7 +13,12 @@ logger = LogContract("cli")
 
 
 def run_command():
-    """Execute the main workflow."""
+    """
+    Execute the main workflow.
+    
+    Returns:
+        0 on success
+    """
     logger.info("Starting main workflow execution")
     
     print("=" * 60)
@@ -33,7 +38,12 @@ def run_command():
 
 
 def stats_command():
-    """Display project statistics."""
+    """
+    Display project statistics.
+    
+    Returns:
+        0 on success
+    """
     logger.info("Generating project statistics")
     
     print("=" * 60)
@@ -100,7 +110,7 @@ def acceptance_command(output_dir: str = ".starx/evidence"):
     
     # Run acceptance tests
     test_results = []
-    timestamp = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
+    timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
     
     print("Running acceptance tests...")
     print()
@@ -124,7 +134,7 @@ def acceptance_command(output_dir: str = ".starx/evidence"):
             "test": test_name,
             "status": "FAILED",
             "reason": f"Missing required files: {', '.join(missing_files)}",
-            "timestamp": datetime.utcnow().isoformat()
+            "timestamp": datetime.now(timezone.utc).isoformat()
         }
         test_results.append(result)
         print(f"  ✗ FAILED: Missing required files")
@@ -146,7 +156,7 @@ def acceptance_command(output_dir: str = ".starx/evidence"):
         result = {
             "test": test_name,
             "status": "PASSED",
-            "timestamp": datetime.utcnow().isoformat()
+            "timestamp": datetime.now(timezone.utc).isoformat()
         }
         test_results.append(result)
         print(f"  ✓ PASSED")
@@ -161,7 +171,7 @@ def acceptance_command(output_dir: str = ".starx/evidence"):
             "test": test_name,
             "status": "FAILED",
             "reason": "Missing starx/__main__.py for CLI entrypoint",
-            "timestamp": datetime.utcnow().isoformat()
+            "timestamp": datetime.now(timezone.utc).isoformat()
         }
         test_results.append(result)
         print(f"  ✗ FAILED")
@@ -182,7 +192,7 @@ def acceptance_command(output_dir: str = ".starx/evidence"):
         result = {
             "test": test_name,
             "status": "PASSED",
-            "timestamp": datetime.utcnow().isoformat()
+            "timestamp": datetime.now(timezone.utc).isoformat()
         }
         test_results.append(result)
         print(f"  ✓ PASSED")
@@ -201,7 +211,7 @@ def acceptance_command(output_dir: str = ".starx/evidence"):
         result = {
             "test": test_name,
             "status": "PASSED",
-            "timestamp": datetime.utcnow().isoformat()
+            "timestamp": datetime.now(timezone.utc).isoformat()
         }
         test_results.append(result)
         print(f"  ✓ PASSED")
@@ -210,7 +220,7 @@ def acceptance_command(output_dir: str = ".starx/evidence"):
             "test": test_name,
             "status": "FAILED",
             "reason": f"Invalid configuration schema: {str(e)}",
-            "timestamp": datetime.utcnow().isoformat()
+            "timestamp": datetime.now(timezone.utc).isoformat()
         }
         test_results.append(result)
         print(f"  ✗ FAILED")

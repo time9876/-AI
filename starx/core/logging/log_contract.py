@@ -7,7 +7,7 @@ All components must adhere to this contract for consistent logging.
 
 import logging
 from typing import Any, Dict, Optional
-from datetime import datetime
+from datetime import datetime, timezone
 
 
 class LogContract:
@@ -33,7 +33,7 @@ class LogContract:
             metadata: Optional metadata dictionary
         """
         log_data = {
-            "timestamp": datetime.utcnow().isoformat(),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             "component": self.component_name,
             "message": message,
             "metadata": metadata or {}
