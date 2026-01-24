@@ -2,7 +2,9 @@
 
 import json
 import os
+import platform
 import subprocess
+import sys
 from datetime import datetime
 from pathlib import Path
 from typing import Optional
@@ -50,7 +52,7 @@ def generate_evidence_bundle(
         evidence["environment"] = {
             "platform": _get_platform_info(),
             "python_version": _get_python_version(),
-            "env_vars": dict(os.environ) if include_env else {},
+            "env_vars": dict(os.environ),
         }
 
     # Collect git information
@@ -71,8 +73,6 @@ def generate_evidence_bundle(
 
 def _get_platform_info() -> dict:
     """Get platform information."""
-    import platform
-
     return {
         "system": platform.system(),
         "release": platform.release(),
@@ -82,8 +82,6 @@ def _get_platform_info() -> dict:
 
 def _get_python_version() -> str:
     """Get Python version."""
-    import sys
-
     return f"{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}"
 
 
