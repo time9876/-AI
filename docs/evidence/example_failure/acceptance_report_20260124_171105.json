@@ -1,0 +1,15 @@
+{
+  "timestamp": "20260124_171105",
+  "success": false,
+  "total_tests": 1,
+  "passed": 0,
+  "failed": 1,
+  "tests": [
+    {
+      "test": "required_files_exist",
+      "status": "FAILED",
+      "reason": "Missing required files: docs/STARX_RUNTIME_SPEC.md",
+      "timestamp": "2026-01-24T17:11:05.570497"
+    }
+  ]
+}

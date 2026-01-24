@@ -1,0 +1,6 @@
+{
+  "test": "required_files_exist",
+  "status": "FAILED",
+  "reason": "Missing required files: docs/STARX_RUNTIME_SPEC.md",
+  "timestamp": "2026-01-24T17:11:05.570497"
+}

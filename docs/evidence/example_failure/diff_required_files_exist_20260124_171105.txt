@@ -1,0 +1,3 @@
+Test Failed: required_files_exist
+Reason: Missing required files: docs/STARX_RUNTIME_SPEC.md
+Timestamp: 2026-01-24T17:11:05.570497
