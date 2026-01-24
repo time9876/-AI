@@ -7,7 +7,7 @@ Main component for generating evidence bundles.
 import os
 import uuid
 from datetime import datetime
-from typing import Optional, Dict, Any
+from typing import Optional, Dict, Any, Tuple, List
 
 from .models import EvidenceBundle, ArtifactMetadata
 from .collector import EvidenceCollector
@@ -88,7 +88,7 @@ class EvidenceBundleGenerator:
     def generate_and_save(self,
                          command: str = None,
                          metadata: Dict[str, Any] = None,
-                         filename: str = None) -> tuple[EvidenceBundle, str]:
+                         filename: str = None) -> Tuple[EvidenceBundle, str]:
         """
         Generate an evidence bundle and save it to disk.
         
@@ -117,7 +117,7 @@ class EvidenceBundleGenerator:
         
         return bundle, filepath
     
-    def _collect_artifacts(self) -> list[ArtifactMetadata]:
+    def _collect_artifacts(self) -> List[ArtifactMetadata]:
         """Collect information about artifacts in the current directory."""
         artifacts = []
         
